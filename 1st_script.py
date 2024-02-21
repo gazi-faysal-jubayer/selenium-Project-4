@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+import math
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
@@ -22,6 +23,8 @@ def sub():
 
 pages = []
 
+count = int(driver.find_element(By.XPATH, "//*[@id='main']/div/div[2]/jhi-item-count/div").text.split(' ')[-2])
+lim = math.ceil(count/30)
 for j in range(66):
 # while True:
     try:
