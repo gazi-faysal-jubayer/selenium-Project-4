@@ -73,7 +73,7 @@ for c in range(len(df)):
     x = driver.find_element(By.XPATH, "(//div[@class='panel-body'])")
     y = x.find_elements(By.CLASS_NAME, "col-md-12")
     for i in range(int(len(y)/5)):
-        t = y[i*5].text.replace('\n', '')
+        t = y[i*5].text.replace('\n', '').replace('IAM Young Professional', '')
         if 'Email' in t:
             email = t.split('Email:')[1]
             t = t.split('Email:')[0]
