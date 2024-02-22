@@ -14,19 +14,19 @@ columns = [
     'Parent Company', 'Contact Name', 'Title', 'Office Phone', 'Email',
     'Association Memberships - FIDI', 'Association Memberships - DAB', 'Association Memberships - Harmony', 'Links'
 ]
-output_file = 'output-1.csv'
+output_file = 'output-2.csv'
 
 # Check if the output file already exists
 if not os.path.isfile(output_file):
     empty_df = pd.DataFrame(columns=columns)
     empty_df.to_csv(output_file, index=False)
 
-file_path = 'filtered_links-1.csv'
+file_path = 'filtered_links-2.csv'
 df = pd.read_csv(file_path)
 
 for c in range(len(df)):
     link = df.iloc[c, 0]
-    df1 = pd.read_csv('output-1.csv')
+    df1 = pd.read_csv('output-2.csv')
     if link in df1['Links'].values:
         continue  # Skip processing if the link is already in the output
     else:
@@ -114,10 +114,10 @@ for c in range(len(df)):
             }
             # print(data)
             data_list = [data]
-            existing_data = pd.read_csv('output-1.csv')
+            existing_data = pd.read_csv('output-2.csv')
             new_data_df = pd.DataFrame(data_list, columns=columns)
             updated_data = existing_data._append(new_data_df, ignore_index=True)
-            updated_data.to_csv('output-1.csv', index=False)
+            updated_data.to_csv('output-2.csv', index=False)
             
         driver.quit()
 
