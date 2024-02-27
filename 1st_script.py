@@ -8,7 +8,9 @@ from selenium.common.exceptions import TimeoutException, StaleElementReferenceEx
 import pandas as pd
 
 driver = webdriver.Chrome()
-driver.get("https://mobilityex.com/#/search?svc=Moving%20Services%20Company%20&sort=companylegalname,asc&range=50&mocs=104&assocs=800&query=q%3D%204&spc=10")
+#Put your link here
+mainlink = "https://mobilityex.com/#/search?svc=Moving%20Services%20Company%20&sort=companylegalname,asc&range=50&mocs=104&assocs=800&query=q%3D%204&spc=10"
+driver.get(mainlink)
 driver.implicitly_wait(10)
 
 links_list = []
@@ -22,7 +24,7 @@ def sub():
         links_list.append(href)
 
 pages = []
-
+time.sleep(10)
 count = int(driver.find_element(By.XPATH, "//*[@id='main']/div/div[2]/jhi-item-count/div").text.split(' ')[-2])
 lim = math.ceil(count/30)
 for j in range(66):
@@ -38,14 +40,6 @@ for j in range(66):
         
         pages.append(active_page_number)
         
-        # # Find the <ul> element with class "pagination"
-        # pagination_ul = driver.find_element(By.CLASS_NAME,"pagination")
-
-        # # Find all <li> elements within the <ul> using XPath
-        # li_elements = pagination_ul.find_elements(By.XPATH,".//li")
-        # if len(li_elements)==1:
-        #     break
-
         # # Construct the XPath for the next page
         next_page_xpath = "#left > ul > li.pagination-next > a"
 
@@ -71,4 +65,4 @@ driver.quit()
 df = pd.DataFrame(links_list, columns=['Links'])
 
 # Save the DataFrame to a CSV file
-df.to_csv('filtered_links.csv', index=False)
+df.to_csv('filtered_links.csv', index=False) #output file name and directory
