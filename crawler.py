@@ -27,7 +27,7 @@ pages = []
 time.sleep(10)
 count = int(driver.find_element(By.XPATH, "//*[@id='main']/div/div[2]/jhi-item-count/div").text.split(' ')[-2])
 lim = math.ceil(count/30)
-for j in range(66):
+for j in range(lim):
 # while True:
     try:
         # Find the active page number
@@ -65,4 +65,4 @@ driver.quit()
 df = pd.DataFrame(links_list, columns=['Links'])
 
 # Save the DataFrame to a CSV file
-df.to_csv('filtered_links.csv', index=False) #output file name and directory
+df.to_csv('filtered_links1.csv', index=False) #output file name and directory
