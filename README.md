@@ -17,6 +17,6 @@ Run the scraper to scrape the Data from the URLs
 Final output will be generated in the `output.csv` file
 
 ## Tricks
-<b>1.0</b>    Sometime the code breaks. It happens when the page which is being scrapped is not responding. It can be for net connectivity or anything else. Then go to the `output.csv` and copy the link of last page it scrapped. Then find it to `filtered_links.csv`. Suppose You get it at 35th cell, You replace the link of 36th cell. 
+<b>1.0</b>    Sometime the code breaks. It happens when the page which is being scrapped is not responding. It can be for net connectivity or anything else. Then the missing page will be skipped and will be listed in a different csv file named `missing_links.csv`. 
 
-<b>2.0</b>    You can devide the input and output file and run several times at the same time at the `scraper.py`. you just have to make a simple change in the code of `scraper.py`. Input the input file directory for `scraper.py`, the URLs file, where you get `filtered_links.csv.csv` (1 times in the code) and same for the output file `output.csv` (4 times in the code)
+<b>2.0</b>    You can devide the input and output file and run several times at the same time at the `scraper.py`. you just have to make a simple change in the code of `scraper.py`. Input the input file directory for `scraper.py`, the URLs file, where you get `filtered_links.csv.csv`, same for the output file `output.csv` and missing links file `missing_links.csv`.
